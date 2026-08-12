@@ -1,0 +1,1270 @@
+/* ==========================================================================
+   1. RESET & BASE STYLES
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #0b0b0d;
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. FLOATING HEADER / NAVBAR
+   ========================================================================== */
+.header {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.nav-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(18, 14, 12, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 6px;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.nav-link {
+  color: #cccccc;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+}
+
+.nav-link.active {
+  background-color: #e5a663;
+  color: #121212;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   3. HERO SECTION
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 70px;
+  overflow: hidden;
+}
+
+.hero-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 10, 12, 0.2) 0%,
+    rgba(10, 10, 12, 0.5) 50%,
+    rgba(10, 10, 12, 0.95) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 850px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.hero-title .highlight {
+  color: #e5a663;
+  font-weight: 700;
+}
+
+.hero-description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #d1d5db;
+  max-width: 660px;
+  margin-bottom: 28px;
+  font-weight: 300;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  background-color: #e5a663;
+  color: #121212;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 4px 4px 4px 20px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.btn-hero:hover {
+  background-color: #f0b272;
+  transform: translateY(-2px);
+}
+
+.btn-hero span {
+  margin-right: 12px;
+}
+
+.btn-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #121212;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+}
+
+.btn-arrow svg {
+  stroke: #ffffff;
+}
+
+
+
+/* ==========================================================================
+   4. AUTHOR INTRO SECTION (AVATAR LEFT, HEADLINE RIGHT)
+   ========================================================================== */
+   /* ==========================================================================
+   4. AUTHOR INTRO SECTION (AVATAR LEFT, HEADLINE RIGHT)
+   ========================================================================== */
+.author-intro-section {
+  position: relative;
+  background-color: #f4f3ef;
+  color: #1a1a1a;
+  padding: 80px 40px 40px;
+}
+
+.author-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.author-bio-container {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.author-avatar {
+  width: 104px;
+  height: 104px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  mix-blend-mode: multiply;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.author-avatar:hover {
+  transform: scale(1.05);
+}
+
+.author-headline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 31px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #4e0303;
+  margin: 0;
+}
+
+.author-headline em {
+  font-style: italic;
+  font-weight: 400;
+  color: #c88338;
+}
+
+ /* ==========================================================================
+ CAROUSEL SECTION
+ ========================================================================== */
+.carousel-section {
+background-color: #f4f3ef;
+padding: 0; /* Zero vertical padding so card background spans full section height */
+margin: 0;
+width: 100%;
+position: relative;
+}
+
+.section-subheading {
+display: block;
+max-width: 1350px;
+margin: 0 auto 28px;
+padding: 40px 40px 0 40px;
+font-family: 'Plus Jakarta Sans', sans-serif;
+font-size: 0.85rem;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+color: #8c8a84;
+}
+
+.carousel-container {
+width: 100%;
+overflow: hidden;
+position: relative;
+display: flex;
+padding-top: 32px;    /* Top spacing for thumbnails */
+padding-bottom: 0;     /* Must stay 0 to sit completely flush with the ticker */
+margin: 0;
+}
+
+.carousel-track {
+display: flex;
+gap: 28px;
+width: max-content;
+align-items: stretch; /* Forces cards to expand full vertical height */
+animation: infiniteScroll 25s linear infinite;
+will-change: transform;
+}
+
+.carousel-container:hover .carousel-track {
+animation-play-state: paused;
+}
+
+@keyframes infiniteScroll {
+0% { transform: translateX(0); }
+100% { transform: translateX(-50%); }
+}
+
+/* ==========================================================================
+ ARTICLE CARD & TOP-TO-BOTTOM GRADIENT HIGHLIGHT
+ ========================================================================== */
+.article-card {
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 270px;
+flex-shrink: 0;
+text-decoration: none;
+position: relative;
+padding: 24px 16px 40px 16px;
+border-radius: 0; /* Flat column edges touch the ticker directly */
+background-color: transparent;
+transition: background 0.35s ease;
+transform: none; /* Disables Y-shift so bottom edge stays anchored to ticker */
+}
+
+/* Framer atmospheric fade: soft glow at top fading into solid dark brown at ticker */
+.article-card:hover,
+.article-card:focus,
+.article-card:active,
+.article-card.active {
+background: linear-gradient(
+  180deg, 
+  rgba(40, 38, 24, 0.12) 0%,   /* Soft atmospheric fade at top */
+  rgba(40, 38, 24, 0.75) 35%,  /* Transitions under image */
+  #282618 100%                 /* Solid dark brown matching ticker bar */
+);
+z-index: 5;
+}
+/* Update this rule to only target :hover and explicit .active classes */
+.article-card:hover,
+.article-card.active {
+  background: linear-gradient(
+    180deg, 
+    rgba(40, 38, 24, 0.12) 0%,
+    rgba(40, 38, 24, 0.75) 35%,
+    #282618 100%
+  );
+  z-index: 5;
+}
+
+/* Optional: Subtle focus ring for accessibility without triggering full card highlight */
+.article-card:focus-visible {
+  outline: 2px solid #d4924c;
+  outline-offset: -4px;
+}
+
+/* Thumbnail Box (Keeps image zoom cleanly contained) */
+.article-thumb {
+position: relative;
+width: 100%;
+height: 350px;
+border-radius: 14px;
+overflow: hidden; /* Clips image scale zoom inside image area only */
+margin-bottom: 18px;
+background-color: #e5e4de;
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+transition: box-shadow 0.4s ease;
+}
+
+.article-card:hover .article-thumb {
+box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+}
+
+.article-thumb img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+
+.article-card:hover .article-thumb img {
+transform: scale(1.06);
+filter: brightness(0.92);
+}
+
+/* Glass READ MORE overlay badge */
+.read-more-overlay,
+.article-thumb::after {
+content: 'READ MORE';
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -40%) scale(0.9);
+background: rgba(255, 255, 255, 0.92);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+color: #121212;
+font-family: 'Plus Jakarta Sans', sans-serif;
+font-size: 0.75rem;
+font-weight: 700;
+letter-spacing: 0.1em;
+padding: 10px 22px;
+border-radius: 30px;
+border: 1px solid rgba(255, 255, 255, 0.8);
+box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+opacity: 0;
+transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+pointer-events: none;
+white-space: nowrap;
+}
+
+.article-card:hover .read-more-overlay,
+.article-card:hover .article-thumb::after {
+opacity: 1;
+transform: translate(-50%, -50%) scale(1);
+}
+
+/* Title text styling and active contrast shift */
+.article-title {
+font-family: 'Plus Jakarta Sans', sans-serif;
+font-size: 1.05rem;
+font-weight: 600;
+line-height: 1.35;
+letter-spacing: -0.015em;
+color: #262626;
+text-align: center;
+width: 100%;
+transition: color 0.3s ease;
+}
+
+.article-card:hover .article-title,
+.article-card:focus .article-title,
+.article-card:active .article-title,
+.article-card.active .article-title {
+color: #d6d4c9 !important; /* Converts title to warm off-white over dark background */
+}
+
+/* ==========================================================================
+ SEAMLESS ZERO-PAUSE TICKER BAR
+ ========================================================================== */
+.ticker-wrap {
+width: 100%;
+background-color: #282618; /* Exact match with active card bottom background */
+overflow: hidden;
+padding: 18px 0;
+margin-top: 0;
+display: flex;
+}
+
+.ticker-move {
+display: flex;
+width: max-content;
+animation: tickerLoop 20s linear infinite;
+will-change: transform;
+}
+
+.ticker-content {
+display: flex;
+align-items: center;
+gap: 32px;
+padding-right: 32px;
+white-space: nowrap;
+}
+
+.ticker-content span {
+font-family: 'Plus Jakarta Sans', sans-serif;
+font-size: 0.85rem;
+font-weight: 700;
+letter-spacing: 0.18em;
+color: #d6d4c9;
+text-transform: uppercase;
+}
+
+.ticker-content .dot {
+color: #787563;
+font-size: 0.75rem;
+}
+
+@keyframes tickerLoop {
+0% { transform: translateX(0); }
+100% { transform: translateX(-50%); }
+}
+
+/* ==========================================================================
+ 6. RESPONSIVE BREAKPOINTS
+ ========================================================================== */
+@media (max-width: 850px) {
+.author-container {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.author-headline {
+  font-size: 1.9rem;
+}
+}
+
+@media (max-width: 768px) {
+.author-intro-section {
+  padding: 60px 20px 60px;
+}
+
+.author-headline {
+  font-size: 1.9rem;
+  margin-bottom: 40px;
+}
+
+.carousel-container {
+  padding: 10px 20px 20px;
+}
+
+.article-card {
+  width: 210px;
+}
+
+.article-thumb {
+  height: 280px;
+}
+
+.header {
+  top: 12px;
+  width: 92%;
+}
+
+.nav-pill {
+  overflow-x: auto;
+  justify-content: space-between;
+}
+
+.nav-link {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+}
+
+.hero-section {
+  padding-bottom: 40px;
+}
+}
+
+
+/* ==========================================================================
+   BOOK SHOWCASE & QUOTE SECTION
+   ========================================================================== */
+.book-section {
+  background-color: #f4f3ef;
+  padding: 120px 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.book-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header Text */
+.book-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: #121212;
+  letter-spacing: -0.02em;
+  margin-bottom: 54px;
+}
+
+.book-dedication {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-weight: 400;
+  color: #433d3d;
+  margin-bottom: 48px;
+  max-width: 620px;
+  line-height: 1.5;
+}
+
+/* Book Cover Display */
+.book-cover-wrapper {
+  margin-bottom: 60px;
+  perspective: 1000px;
+}
+
+.book-cover {
+  width: 260px;
+  height: 390px;
+  background-color: #000000;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  overflow: hidden;
+}
+
+.book-cover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.24);
+}
+
+.book-art {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+/* Quote Section */
+.quote-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.quote-icon {
+  font-family: 'Plus Jakarta Sans', monospace;
+  font-size: 7.4rem;
+  font-weight: 800;
+  color: #7c7c7c;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.book-quote {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: #121212;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin: 0;
+  max-width: 680px;
+}
+
+.quote-author {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .book-section {
+    padding: 60px 20px;
+  }
+
+  .book-cover {
+    width: 210px;
+    height: 315px;
+  }
+
+  .book-art {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+/* ==========================================================================
+   BOOK SECTION & NEWSLETTER CARD (CLEAN & CLASSY)
+   ========================================================================== */
+.book-section {
+  background-color: #eff4ef; /* Guarantees whole section background is light cream */
+  padding: 80px 40px 100px;
+  width: 100%;
+}
+
+.book-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Quote Author Formatting */
+.quote-author {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8c8a84;
+  margin-bottom: 64px;
+}
+
+/* Classy Subtle Card (Seamless blend with page background) */
+.book-update-card {
+  background-color: #a2774cdf; /* Subtle contrast shift over #f4f3ef background */
+  border: 1px solid #dfdcd3;  /* Soft organic border instead of black/dark lines */
+  padding: 52px 56px;
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 56px;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02); /* Extremely subtle elevation */
+}
+
+/* Typography & Layout */
+.update-tag {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #2f3431;
+  margin-bottom: 12px;
+}
+
+.update-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.3rem;
+  font-weight: 500;
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  color: #0c0400; /* Rich dark espresso tone */
+  margin: 0 0 32px 0;
+}
+
+/* Form Styling */
+.update-form {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.input-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #464132;
+  margin-bottom: 8px;
+}
+
+.update-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 20px;
+  background-color: #f4f3ef; /* Matches section main color */
+  border: 1px solid #d3cfc4;
+  border-radius: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  color: #282618;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.update-input:focus {
+  border-color: #282618;
+  box-shadow: 0 0 0 3px rgba(40, 38, 24, 0.06);
+}
+
+.update-input::placeholder {
+  color: #a8a499;
+}
+
+/* Submit Button */
+.update-btn {
+  height: 48px;
+  padding: 0 26px;
+  background-color: #282618;
+  color: #e6e4db;
+  border: none;
+  border-radius: 24px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.update-btn:hover {
+  background-color: #3e3b29;
+  transform: translateY(-1px);
+}
+
+/* Right Side Descriptive Quote */
+.update-description p {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.2rem;
+  line-height: 1.55;
+  color: #000000b9;
+  margin: 0;
+  border-left: 1px solid #d0ccc0; /* Thin, soft divider line */
+  padding-left: 28px;
+}
+
+/* Mobile Layout */
+@media (max-width: 868px) {
+  .book-update-card {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 36px 24px;
+  }
+  .update-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .update-btn {
+    justify-content: center;
+  }
+  .update-description p {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid #d0c9c0;
+    padding-top: 24px;
+  }
+}
+
+/* ==========================================================================
+   FAQ SECTION STYLING
+   ========================================================================== */
+.faq-section {
+  background-color: #f4f3ef;
+  padding: 80px 40px 100px;
+  width: 100%;
+}
+
+.faq-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.faq-main-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #4e0303;
+  margin-bottom: 48px;
+  letter-spacing: -0.015em;
+}
+
+/* Grid Layout - Stretches left card to match list height */
+.faq-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 40px;
+  align-items: stretch;
+}
+
+/* --------------------------------------------------------------------------
+   Left Contact Card
+   -------------------------------------------------------------------------- */
+.faq-card {
+  background-color: #1a1815;
+  border-radius: 28px;
+  padding: 24px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Dynamically expanding image wrapper to match right list height */
+.faq-card-image {
+  width: 100%;
+  flex: 1;
+  min-height: 320px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  background-color: #000000;
+}
+
+.faq-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.faq-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-card-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: #e5a767; /* Warm amber headline */
+  margin: 0;
+}
+
+.faq-card-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: #b0aca2;
+  margin: 0 0 12px 0;
+}
+
+.faq-card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #d4924c;
+  color: #1a1815;
+  padding: 14px 20px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+}
+
+.faq-card-btn:hover {
+  background-color: #e0a35f;
+}
+
+.btn-arrow {
+  width: 28px;
+  height: 28px;
+  background-color: #1a1815;
+  color: #d4924c;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Right Accordion List
+   -------------------------------------------------------------------------- */
+.faq-accordion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq-item {
+  background-color: #f2eee6;
+  border: 1px solid #e2ddd3;
+  border-radius: 28px;
+  overflow: hidden;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.faq-item[open] {
+  background-color: #ebdcd5; /* Warm terra-cotta tint when expanded */
+  border-color: #d8c3b9;
+}
+
+.faq-question {
+  padding: 22px 28px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #2b2823;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  list-style: none; /* Hides default disclosure triangle */
+  user-select: none;
+}
+
+.faq-question::-webkit-details-marker {
+  display: none; /* Hides webkit disclosure triangle */
+}
+
+/* Arrow/Dot Indicator Button */
+.faq-icon {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  background-color: #a87263;
+  border-radius: 50%;
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+}
+
+.faq-icon::after {
+  content: '↓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  color: #ffffff;
+  font-size: 0.9rem;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Open State: Icon shrinks into a solid circle dot and arrow fades out */
+.faq-item[open] .faq-icon {
+  background-color: #a87263;
+  transform: scale(0.65); /* Shrinks arrow button into solid circle */
+}
+
+.faq-item[open] .faq-icon::after {
+  opacity: 0;
+  transform: translate(-50%, -55%) scale(0);
+}
+
+/* Smooth Slide & Fade for Answer Paragraph */
+.faq-answer {
+  padding: 0 28px 24px 28px;
+  opacity: 0;
+  transform: translateY(-6px);
+  animation: faqSlideDown 0.35s ease forwards;
+}
+
+.faq-answer p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #4a463d;
+  margin: 0;
+}
+
+@keyframes faqSlideDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+  .faq-card-image {
+    min-height: 280px;
+  }
+}
+
+
+/* ==========================================================================
+   SITE FOOTER STYLING
+   ========================================================================== */
+.site-footer {
+  background-color: #1a1815; /* Dark espresso shade matching the FAQ card */
+  color: #e6e4db;
+  padding: 80px 40px 40px;
+  width: 100%;
+}
+
+.footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+/* Brand Column */
+.footer-logo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: #e5a767; /* Warm amber accent */
+  margin: 0 0 16px 0;
+  letter-spacing: -0.01em;
+}
+
+.footer-tagline {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #a39f93;
+  max-width: 380px;
+  margin: 0;
+}
+
+/* Links Columns */
+.footer-heading {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8c897f;
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  color: #d6d3c7;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.footer-links a:hover {
+  color: #e5a767;
+}
+
+/* Divider Line */
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background-color: #2e2b26;
+  margin-bottom: 32px;
+}
+
+/* Footer Bottom Copyright */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  color: #7a776e;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.footer-subtext {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
+
+/* ==========================================================================
+   FLOATING EYE BADGE
+   ========================================================================== */
+   .floating-eye-badge {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      
+      background-color: #121110;
+      padding: 8px 10px 8px 24px;
+      border-radius: 50px;
+      border: 1px solid #383632;
+      
+      text-decoration: none;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      
+      /* Guarantees clickability */
+      pointer-events: auto !important; 
+    }
+    
+    /* Ensure inner elements don't intercept mouse clicks */
+    .floating-eye-badge * {
+      pointer-events: none;
+    }
+
+.floating-eye-badge:hover {
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.badge-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #f4f3ef;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+
+/* Borderless Cream Eye Pair */
+.eye-pair {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.eye {
+  width: 32px;
+  height: 32px;
+  background-color: #f4f3ef;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.pupil {
+  width: 8px;
+  height: 8px;
+  background-color: #121110;
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ==========================================================================
+   COLORFUL QUILL CURSOR
+   ========================================================================== */
+html, body, a, button, summary, input, textarea {
+  cursor: none !important;
+}
+
+.pen-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-5px, -5px); 
+  transition: transform 0.1s ease-out;
+  filter: drop-shadow(0 4px 10px rgba(114, 28, 36, 0.35));
+}
+
+.ink-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  background-color: #e63946;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s cubic-bezier(0.1, 0.7, 0.1, 1), opacity 0.2s ease, background-color 0.2s ease;
+  opacity: 0.8;
+  box-shadow: 0 0 8px rgba(230, 57, 70, 0.5);
+}
+
+body.hovering .pen-cursor {
+  transform: translate(-5px, -5px) rotate(-18deg) scale(1.22);
+}
+
+body.hovering .ink-follower {
+  transform: translate(-50%, -50%) scale(2.2);
+  background-color: #d4924c;
+  box-shadow: 0 0 12px rgba(212, 146, 76, 0.7);
+  opacity: 0.95;
+}
