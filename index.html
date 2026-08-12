@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Consciousness, Time & Reality</title>
+  <title>consciousism</title>
+  <link rel="icon" type="image/x-icon" href="images/author.png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,7 +48,7 @@
     
     <div class="hero-content">
       <h1 class="hero-title">
-        Explore the Realm of <span class="highlight">Consciousness</span>, Time & Reality
+        Explore the Realm of <span class="highlight">Consciousism</span>, Time & Reality
       </h1>
       
       <p class="hero-description">
@@ -267,39 +268,44 @@ window.addEventListener('pageshow', () => {
 </section>
 
 <!-- NEW CLASSY UPDATE SECTION (placed directly after By Clovis) -->
-    <div class="book-update-card" id="contact">
-      <div class="update-content">
-        <div class="update-header">
-          <span class="update-tag">GET UPDATES</span>
-          <h3 class="update-title">Be notified when the next volume drops.</h3>
-        </div>
-        
-        <form class="update-form" onsubmit="event.preventDefault();">
-          <div class="input-group">
-            <label for="update-email" class="input-label">EMAIL</label>
-            <input 
-              type="email" 
-              id="update-email" 
-              class="update-input" 
-              placeholder="Your email address" 
-              required 
-            />
-          </div>
-          <button type="submit" class="update-btn">
-            SUBMIT <span>&rarr;</span>
-          </button>
-        </form>
-      </div>
-
-      <div class="update-description">
-        <p>
-         The endings are soft, or maybe not endings at all, but a quiet pause before the continuation.Be the first to hear when the story breathes back into motion.
-        </p>
-      </div>
+<div class="book-update-card" id="contact">
+  <div class="update-content">
+    <div class="update-header">
+      <span class="update-tag">GET UPDATES</span>
+      <h3 class="update-title">Be notified when the next volume drops.</h3>
     </div>
 
+    <!-- WEB3FORMS WORKING FORM -->
+    <form class="update-form" action="https://api.web3forms.com/submit" method="POST">
+      <!-- Paste Clovis's Access Key from web3forms.com here -->
+      <input type="hidden" name="access_key" value="879dd2e6-7131-4b8e-8094-fc475b46bfb8" />
+      
+      <!-- Sets the subject line of the email Clovis receives -->
+      <input type="hidden" name="subject" value="New Subscriber - Consciousness, So Far" />
+    
+      <div class="input-group">
+        <label for="update-email" class="input-label">EMAIL</label>
+        <input 
+          type="email" 
+          id="update-email" 
+          name="email" 
+          class="update-input" 
+          placeholder="Your email address" 
+          required 
+        />
+      </div>
+      <button type="submit" class="update-btn">
+        SUBMIT <span>&rarr;</span>
+      </button>
+    </form>
   </div>
-</section> 
+
+  <div class="update-description">
+    <p>
+      The endings are soft, or maybe not endings at all, but a quiet pause before the continuation. Be the first to hear when the story breathes back into motion.
+    </p>
+  </div>
+</div>
 
 <!-- FAQ SECTION -->
 <section class="faq-section" id="faq">
