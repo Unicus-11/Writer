@@ -805,6 +805,27 @@ font-size: 0.75rem;
   }
 }
 
+
+.form-result-msg {
+  display: none;
+  margin-top: 14px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #f4f3ef;
+  letter-spacing: 0.02em;
+}
+
+.form-result-msg.success {
+  display: block;
+  color: #311912; /* Matches your warm terracotta accent */
+}
+
+.form-result-msg.error {
+  display: block;
+  color: #351013;
+}
+
 /* ==========================================================================
    FAQ SECTION STYLING
    ========================================================================== */

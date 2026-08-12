@@ -275,12 +275,9 @@ window.addEventListener('pageshow', () => {
       <h3 class="update-title">Be notified when the next volume drops.</h3>
     </div>
 
-    <!-- WEB3FORMS WORKING FORM -->
-    <form class="update-form" action="https://api.web3forms.com/submit" method="POST">
-      <!-- Paste Clovis's Access Key from web3forms.com here -->
+    <form id="newsletter-form" class="update-form">
+      <!-- REPLACE WITH YOUR ACTUAL WEB3FORMS ACCESS KEY -->
       <input type="hidden" name="access_key" value="879dd2e6-7131-4b8e-8094-fc475b46bfb8" />
-      
-      <!-- Sets the subject line of the email Clovis receives -->
       <input type="hidden" name="subject" value="New Subscriber - Consciousness, So Far" />
     
       <div class="input-group">
@@ -294,10 +291,14 @@ window.addEventListener('pageshow', () => {
           required 
         />
       </div>
-      <button type="submit" class="update-btn">
+      <button type="submit" id="submit-btn" class="update-btn">
         SUBMIT <span>&rarr;</span>
       </button>
     </form>
+    
+    <!-- SUCCESS / ERROR MESSAGE CONTAINER -->
+    <p id="form-result" class="form-result-msg"></p>
+
   </div>
 
   <div class="update-description">
@@ -527,7 +528,50 @@ document.addEventListener('DOMContentLoaded', () => {
       e.stopPropagation(); // Prevents parent containers from canceling the click
     });
   }
+  
 });
+
+
+
+  const newsletterForm = document.getElementById('newsletter-form');
+  const resultMsg = document.getElementById('form-result');
+  const submitBtn = document.getElementById('submit-btn');
+
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', async (e) => {
+      e.preventDefault(); // Stops page reload
+      
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'SENDING...';
+
+      const formData = new FormData(newsletterForm);
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          resultMsg.className = 'form-result-msg success';
+          resultMsg.textContent = 'Thank you! You have been added to the list.';
+          newsletterForm.reset();
+        } else {
+          resultMsg.className = 'form-result-msg error';
+          resultMsg.textContent = 'Invalid Access Key. Please check your Web3Forms key.';
+        }
+      } catch (error) {
+        resultMsg.className = 'form-result-msg error';
+        resultMsg.textContent = 'Connection error. Please try again.';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'SUBMIT <span>&rarr;</span>';
+      }
+    });
+  }
+
   // Pen Cursor & Eye Pupil Tracking Logic
   const pen = document.querySelector('.pen-cursor');
   const ink = document.querySelector('.ink-follower');
