@@ -1,88 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Dashboard | Subscribers</title>
+  
+  <!-- Font Setup -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="admin.css" />
+
   <style>
-    body { font-family: sans-serif; background: #f4f3ef; color: #121212; padding: 40px; }
-    .admin-container { max-width: 800px; margin: 0 auto; }
-    .subscriber-list { background: #fff; padding: 20px; border-radius: 8px; margin-bottom: 30px; }
-    .broadcast-card { background: #fff; padding: 20px; border-radius: 8px; }
-    input, textarea { width: 100%; margin-bottom: 12px; padding: 10px; border-radius: 4px; border: 1px solid #ccc; }
-    button { background: #e5a663; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
+    /* Dedicated Auth Gate Overlay */
+    #auth-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #f7f4ef; /* Matches your vintage background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .auth-card {
+      background: #ffffff;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      border: 1px solid #e2dcd5;
+    }
+
+    .auth-card h2 {
+      margin-bottom: 0.5rem;
+      font-family: 'Cinzel', serif;
+      color: #2b211a;
+    }
+
+    .auth-card p {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+
+    .auth-form .form-group {
+      margin-bottom: 1.2rem;
+      text-align: left;
+    }
+
+    .auth-form label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 0.4rem;
+      color: #4a3f35;
+    }
+
+    .auth-form input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      box-sizing: border-box;
+    }
+
+    .auth-btn {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #2b211a;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .auth-btn:hover {
+      background-color: #4a3f35;
+    }
+
+    .auth-error {
+      color: #b84a39;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    /* Hide admin dashboard by default until authenticated */
+    .admin-container, .header {
+      display: none;
+    }
+    /* Ensure custom pen cursor stays above the auth screen overlay */
+.pen-cursor,
+.ink-follower {
+  z-index: 99999 !important;
+  pointer-events: none !important;
+}
+
+/* Make sure the default mouse cursor is hidden on the login screen */
+#auth-overlay {
+  cursor: none;
+}
   </style>
 </head>
-<body>
-  <div class="admin-container">
-    <h1>Subscriber Admin Panel</h1>
+<body class="admin-page">
 
-    <!-- Subscriber Count & List -->
-    <div class="subscriber-list">
-      <h2>Subscribers (<span id="sub-count">0</span>)</h2>
-      <ul id="email-list"></ul>
-    </div>
+  <!-- AUTHENTICATION GATE SCREEN -->
+  <div id="auth-overlay">
+    <div class="auth-card">
+      <h2>Admin Access</h2>
+      <p>Please log in to manage subscribers</p>
+      
+      <form id="auth-form" class="auth-form">
+        <div class="form-group">
+          <label for="admin-email">EMAIL</label>
+          <input type="email" id="admin-email" placeholder="admin@example.com" required />
+        </div>
 
-    <!-- Broadcast Email Sender -->
-    <div class="broadcast-card">
-      <h2>Send Announcement to All Users</h2>
-      <form id="broadcast-form">
-        <input type="text" id="email-subject" placeholder="Email Subject Line" required />
-        <textarea id="email-body" rows="6" placeholder="Write your message here..." required></textarea>
-        <button type="submit" id="send-btn">Send Broadcast &rarr;</button>
+        <div class="form-group">
+          <label for="admin-password">PASSWORD</label>
+          <input type="password" id="admin-password" placeholder="••••••••" required />
+        </div>
+
+        <button type="submit" class="auth-btn">LOG IN</button>
+        <p id="auth-error" class="auth-error">Invalid email or password.</p>
       </form>
     </div>
   </div>
 
+  <!-- Pen Cursor & Follower -->
+  <!-- Replace these lines: -->
+  <!-- <div class="pen-cursor"></div> -->
+  <!-- <div class="ink-follower"></div> -->
+  
+  <!-- WITH THIS FULL SVG CURSOR: -->
+  <div class="pen-cursor">
+    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="quillGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#721c24" />
+          <stop offset="50%" stop-color="#a87263" />
+          <stop offset="100%" stop-color="#d4924c" />
+        </linearGradient>
+        <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#f3d085" />
+          <stop offset="100%" stop-color="#c98a2d" />
+        </linearGradient>
+      </defs>
+      <path d="M12 2L16.5 9.5L12 22.5L7.5 9.5L12 2Z" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+      <path d="M12 2L16 9L12 22L8 9L12 2Z" fill="url(#quillGradient)" stroke="#1a1815" stroke-width="0.8"/>
+      <path d="M12 14L14.5 18.5L12 22L9.5 18.5L12 14Z" fill="url(#goldGradient)"/>
+      <circle cx="12" cy="10" r="1.5" fill="#e63946"/>
+      <line x1="12" y1="10" x2="12" y2="22" stroke="#e63946" stroke-width="1.2"/>
+    </svg>
+  </div>
+  <div class="ink-follower"></div>
+
+  <!-- Shared Header Navigation -->
+  <header class="header" id="admin-header">
+    <nav class="nav-pill">
+      <a href="index.html#home" class="nav-link">Home</a>
+      <a href="index.html#book" class="nav-link">Book</a>
+      <a href="index.html#articles" class="nav-link">Articles</a>
+      <a href="index.html#update" class="nav-link">Update</a>
+      <a href="index.html#faq" class="nav-link">FAQ</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </nav>
+  </header>
+
+  <main class="admin-container" id="admin-content">
+    <h1 class="admin-title">Subscriber Admin Panel</h1>
+
+    <!-- Subscriber List Card -->
+    <div class="admin-card">
+      <h2>
+        Subscribers 
+        <span class="sub-badge" id="sub-count">0</span>
+      </h2>
+      <ul id="email-list" class="subscriber-list">
+        <!-- Dynamic list items populate here -->
+      </ul>
+    </div>
+
+    <!-- Broadcast Form Card -->
+    <div class="admin-card">
+      <h2>Send Announcement to All Subscribers</h2>
+      <form id="broadcast-form" class="broadcast-form">
+        
+        <div class="form-group">
+          <label for="email-subject">SUBJECT LINE</label>
+          <input type="text" id="email-subject" placeholder="Email Subject Line" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email-body">MESSAGE</label>
+          <textarea id="email-body" rows="6" placeholder="Write your broadcast message here..." required></textarea>
+        </div>
+
+        <button type="submit" id="send-btn" class="send-broadcast-btn">
+          SEND BROADCAST <span>&rarr;</span>
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <!-- External JS for custom pen cursor & dynamic elements -->
+  <script src="script.js"></script>
+
   <script type="module">
     import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-
-    const supabaseUrl = 'YOUR_SUPABASE_PROJECT_URL';
-    const supabaseKey = 'YOUR_SUPABASE_ANON_KEY';
+  
+    // Supabase Configuration
+    const supabaseUrl = 'https://epdxwonziuyjwqykseez.supabase.co';
+    const supabaseKey = 'sb_publishable_cK2ciA4oV6-_HvPaMesoxg_xy0Tiy8n';
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    // Fetch and display subscribers
+    // ==========================================
+    // SET YOUR HARDCODED CREDENTIALS HERE
+    // ==========================================
+    const ADMIN_EMAIL = "mandukya8@gmail.com";
+    const ADMIN_PASSWORD = "Cosmos";
+
+    // Handle Login Form Submission
+    const authForm = document.getElementById('auth-form');
+    const authOverlay = document.getElementById('auth-overlay');
+    const authError = document.getElementById('auth-error');
+    const adminHeader = document.getElementById('admin-header');
+    const adminContent = document.getElementById('admin-content');
+
+    authForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const enteredEmail = document.getElementById('admin-email').value.trim();
+      const enteredPassword = document.getElementById('admin-password').value.trim();
+
+      if (enteredEmail === ADMIN_EMAIL && enteredPassword === ADMIN_PASSWORD) {
+        // Hide Login Screen Overlay
+        authOverlay.style.display = 'none';
+
+        // Show Admin Content & Navigation
+        adminHeader.style.display = 'block';
+        adminContent.style.display = 'block';
+
+        // Fetch subscribers from Supabase
+        loadSubscribers();
+      } else {
+        authError.style.display = 'block';
+      }
+    });
+
+    // Fetch Subscribers from Supabase
     async function loadSubscribers() {
       const { data: subscribers, error } = await supabase
-        .from('subscribers')
+        .from('Subscribers')
         .select('*')
         .order('created_at', { ascending: false });
-
+  
       if (error) {
-        console.error(error);
+        console.error('Error fetching subscribers:', error);
         return;
       }
-
+  
       const listElement = document.getElementById('email-list');
-      document.getElementById('sub-count').textContent = subscribers.length;
+      document.getElementById('sub-count').textContent = subscribers ? subscribers.length : 0;
       listElement.innerHTML = '';
-
+  
+      if (!subscribers || subscribers.length === 0) {
+        const emptyLi = document.createElement('li');
+        emptyLi.textContent = 'No subscribers found yet.';
+        listElement.appendChild(emptyLi);
+        return;
+      }
+  
       subscribers.forEach(sub => {
         const li = document.createElement('li');
         li.textContent = sub.email;
         listElement.appendChild(li);
       });
     }
-
-    // Send Broadcast Handler via Serverless Function / Resend API
+  
+    // Broadcast Form Submission
     document.getElementById('broadcast-form').addEventListener('submit', async (e) => {
       e.preventDefault();
+      const sendBtn = document.getElementById('send-btn');
       const subject = document.getElementById('email-subject').value;
       const body = document.getElementById('email-body').value;
-
-      const response = await fetch('/api/send-broadcast', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ subject, message: body })
-      });
-
-      if (response.ok) {
-        alert('Broadcast sent successfully!');
-      } else {
-        alert('Failed to send broadcast.');
+  
+      sendBtn.disabled = true;
+      sendBtn.innerHTML = 'SENDING...';
+  
+      try {
+        const response = await fetch('/api/send-broadcast', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ subject, message: body })
+        });
+  
+        if (response.ok) {
+          alert('Broadcast sent successfully!');
+          document.getElementById('broadcast-form').reset();
+        } else {
+          alert('Failed to send broadcast.');
+        }
+      } catch (err) {
+        alert('Connection error while sending broadcast.');
+      } finally {
+        sendBtn.disabled = false;
+        sendBtn.innerHTML = 'SEND BROADCAST <span>&rarr;</span>';
       }
     });
-
-    loadSubscribers();
   </script>
+
+<script>
+  // Mousemove listener for custom pen cursor
+  const pen = document.querySelector('.pen-cursor');
+  const ink = document.querySelector('.ink-follower');
+
+  document.addEventListener('mousemove', (e) => {
+    if (pen && ink) {
+      pen.style.left = `${e.clientX}px`;
+      pen.style.top = `${e.clientY}px`;
+      
+      ink.style.left = `${e.clientX}px`;
+      ink.style.top = `${e.clientY}px`;
+    }
+  });
+</script>
 </body>
 </html>

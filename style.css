@@ -1464,3 +1464,17 @@ body.hovering .ink-follower {
   box-shadow: 0 0 12px rgba(212, 146, 76, 0.7);
   opacity: 0.95;
 }
+
+
+
+/* Admin link*/
+
+.admin-secret-link {
+  color: transparent;
+  text-decoration: none;
+  font-size: 0.8rem;
+  user-select: none;
+}
+.admin-secret-link:hover {
+  color: #a39e95; /* Subtle hint on direct hover */
+}
