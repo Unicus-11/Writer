@@ -16,6 +16,11 @@ html, body {
   overflow-x: hidden;
 }
 
+/* Custom Cursor Reset */
+html, body, a, button, summary, input, textarea {
+  cursor: none !important;
+}
+
 /* ==========================================================================
    2. FLOATING HEADER / NAVBAR
    ========================================================================== */
@@ -55,18 +60,19 @@ html, body {
   color: #ffffff !important;
 }
 
-/* Forced Orange Pill Styling */
+/* Active Nav Link */
 .nav-pill .nav-link.active {
   background-color: #e5a663 !important;
   color: #121212 !important;
   font-weight: 600 !important;
 }
+
 /* ==========================================================================
    3. HERO SECTION
    ========================================================================== */
 .hero-section {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -175,13 +181,8 @@ html, body {
   stroke: #ffffff;
 }
 
-
-
 /* ==========================================================================
-   4. AUTHOR INTRO SECTION (AVATAR LEFT, HEADLINE RIGHT)
-   ========================================================================== */
-   /* ==========================================================================
-   4. AUTHOR INTRO SECTION (AVATAR LEFT, HEADLINE RIGHT)
+   4. AUTHOR INTRO SECTION
    ========================================================================== */
 .author-intro-section {
   position: relative;
@@ -233,294 +234,219 @@ html, body {
   color: #c88338;
 }
 
- /* ==========================================================================
- CAROUSEL SECTION
- ========================================================================== */
+/* ==========================================================================
+   5. CAROUSEL SECTION
+   ========================================================================== */
 .carousel-section {
-background-color: #f4f3ef;
-padding: 0; /* Zero vertical padding so card background spans full section height */
-margin: 0;
-width: 100%;
-position: relative;
+  background-color: #f4f3ef;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  position: relative;
 }
 
 .section-subheading {
-display: block;
-max-width: 1350px;
-margin: 0 auto 28px;
-padding: 40px 40px 0 40px;
-font-family: 'Plus Jakarta Sans', sans-serif;
-font-size: 0.85rem;
-font-weight: 700;
-text-transform: uppercase;
-letter-spacing: 0.1em;
-color: #8c8a84;
+  display: block;
+  max-width: 1350px;
+  margin: 0 auto 28px;
+  padding: 40px 40px 0 40px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #8c8a84;
 }
 
 .carousel-container {
-width: 100%;
-overflow: hidden;
-position: relative;
-display: flex;
-padding-top: 32px;    /* Top spacing for thumbnails */
-padding-bottom: 0;     /* Must stay 0 to sit completely flush with the ticker */
-margin: 0;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  padding-top: 32px;
+  padding-bottom: 0;
+  margin: 0;
 }
 
 .carousel-track {
-display: flex;
-gap: 28px;
-width: max-content;
-align-items: stretch; /* Forces cards to expand full vertical height */
-animation: infiniteScroll 25s linear infinite;
-will-change: transform;
+  display: flex;
+  gap: 28px;
+  width: max-content;
+  align-items: stretch;
+  animation: infiniteScroll 25s linear infinite;
+  will-change: transform;
 }
 
 .carousel-container:hover .carousel-track {
-animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 @keyframes infiniteScroll {
-0% { transform: translateX(0); }
-100% { transform: translateX(-50%); }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-/* ==========================================================================
- ARTICLE CARD & TOP-TO-BOTTOM GRADIENT HIGHLIGHT
- ========================================================================== */
+/* Article Cards */
 .article-card {
-display: flex;
-flex-direction: column;
-align-items: center;
-width: 270px;
-flex-shrink: 0;
-text-decoration: none;
-position: relative;
-padding: 24px 16px 40px 16px;
-border-radius: 0; /* Flat column edges touch the ticker directly */
-background-color: transparent;
-transition: background 0.35s ease;
-transform: none; /* Disables Y-shift so bottom edge stays anchored to ticker */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 270px;
+  flex-shrink: 0;
+  text-decoration: none;
+  position: relative;
+  padding: 24px 16px 40px 16px;
+  border-radius: 0;
+  background-color: transparent;
+  transition: background 0.35s ease;
+  transform: none;
 }
 
-/* Framer atmospheric fade: soft glow at top fading into solid dark brown at ticker */
 .article-card:hover,
 .article-card:focus,
 .article-card:active,
 .article-card.active {
-background: linear-gradient(
-  180deg, 
-  rgba(40, 38, 24, 0.12) 0%,   /* Soft atmospheric fade at top */
-  rgba(40, 38, 24, 0.75) 35%,  /* Transitions under image */
-  #282618 100%                 /* Solid dark brown matching ticker bar */
-);
-z-index: 5;
-}
-/* Update this rule to only target :hover and explicit .active classes */
-.article-card:hover,
-.article-card.active {
   background: linear-gradient(
     180deg, 
-    rgba(40, 38, 24, 0.12) 0%,
-    rgba(40, 38, 24, 0.75) 35%,
-    #282618 100%
+    rgba(40, 38, 24, 0.12) 0%,   
+    rgba(40, 38, 24, 0.75) 35%,  
+    #282618 100%                 
   );
   z-index: 5;
 }
 
-/* Optional: Subtle focus ring for accessibility without triggering full card highlight */
 .article-card:focus-visible {
   outline: 2px solid #d4924c;
   outline-offset: -4px;
 }
 
-/* Thumbnail Box (Keeps image zoom cleanly contained) */
 .article-thumb {
-position: relative;
-width: 100%;
-height: 350px;
-border-radius: 14px;
-overflow: hidden; /* Clips image scale zoom inside image area only */
-margin-bottom: 18px;
-background-color: #e5e4de;
-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-transition: box-shadow 0.4s ease;
+  position: relative;
+  width: 100%;
+  height: 350px;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 18px;
+  background-color: #e5e4de;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.4s ease;
 }
 
 .article-card:hover .article-thumb {
-box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
 }
 
 .article-thumb img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
 }
 
 .article-card:hover .article-thumb img {
-transform: scale(1.06);
-filter: brightness(0.92);
+  transform: scale(1.06);
+  filter: brightness(0.92);
 }
 
-/* Glass READ MORE overlay badge */
+/* Read More Glass Overlay */
 .read-more-overlay,
 .article-thumb::after {
-content: 'READ MORE';
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -40%) scale(0.9);
-background: rgba(255, 255, 255, 0.92);
-backdrop-filter: blur(12px);
--webkit-backdrop-filter: blur(12px);
-color: #121212;
-font-family: 'Plus Jakarta Sans', sans-serif;
-font-size: 0.75rem;
-font-weight: 700;
-letter-spacing: 0.1em;
-padding: 10px 22px;
-border-radius: 30px;
-border: 1px solid rgba(255, 255, 255, 0.8);
-box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-opacity: 0;
-transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-pointer-events: none;
-white-space: nowrap;
+  content: 'READ MORE';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%) scale(0.9);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #121212;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 10px 22px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  white-space: nowrap;
 }
 
 .article-card:hover .read-more-overlay,
 .article-card:hover .article-thumb::after {
-opacity: 1;
-transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
-/* Title text styling and active contrast shift */
 .article-title {
-font-family: 'Plus Jakarta Sans', sans-serif;
-font-size: 1.05rem;
-font-weight: 600;
-line-height: 1.35;
-letter-spacing: -0.015em;
-color: #262626;
-text-align: center;
-width: 100%;
-transition: color 0.3s ease;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: #262626;
+  text-align: center;
+  width: 100%;
+  transition: color 0.3s ease;
 }
 
 .article-card:hover .article-title,
 .article-card:focus .article-title,
 .article-card:active .article-title,
 .article-card.active .article-title {
-color: #d6d4c9 !important; /* Converts title to warm off-white over dark background */
+  color: #d6d4c9 !important;
 }
 
 /* ==========================================================================
- SEAMLESS ZERO-PAUSE TICKER BAR
- ========================================================================== */
+   6. TICKER BAR
+   ========================================================================== */
 .ticker-wrap {
-width: 100%;
-background-color: #282618; /* Exact match with active card bottom background */
-overflow: hidden;
-padding: 18px 0;
-margin-top: 0;
-display: flex;
+  width: 100%;
+  background-color: #282618;
+  overflow: hidden;
+  padding: 18px 0;
+  margin-top: 0;
+  display: flex;
 }
 
 .ticker-move {
-display: flex;
-width: max-content;
-animation: tickerLoop 20s linear infinite;
-will-change: transform;
+  display: flex;
+  width: max-content;
+  animation: tickerLoop 20s linear infinite;
+  will-change: transform;
 }
 
 .ticker-content {
-display: flex;
-align-items: center;
-gap: 32px;
-padding-right: 32px;
-white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding-right: 32px;
+  white-space: nowrap;
 }
 
 .ticker-content span {
-font-family: 'Plus Jakarta Sans', sans-serif;
-font-size: 0.85rem;
-font-weight: 700;
-letter-spacing: 0.18em;
-color: #d6d4c9;
-text-transform: uppercase;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #d6d4c9;
+  text-transform: uppercase;
 }
 
 .ticker-content .dot {
-color: #787563;
-font-size: 0.75rem;
+  color: #787563;
+  font-size: 0.75rem;
 }
 
 @keyframes tickerLoop {
-0% { transform: translateX(0); }
-100% { transform: translateX(-50%); }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* ==========================================================================
- 6. RESPONSIVE BREAKPOINTS
- ========================================================================== */
-@media (max-width: 850px) {
-.author-container {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 30px;
-}
-
-.author-headline {
-  font-size: 1.9rem;
-}
-}
-
-@media (max-width: 768px) {
-.author-intro-section {
-  padding: 60px 20px 60px;
-}
-
-.author-headline {
-  font-size: 1.9rem;
-  margin-bottom: 40px;
-}
-
-.carousel-container {
-  padding: 10px 20px 20px;
-}
-
-.article-card {
-  width: 210px;
-}
-
-.article-thumb {
-  height: 280px;
-}
-
-.header {
-  top: 12px;
-  width: 92%;
-}
-
-.nav-pill {
-  overflow-x: auto;
-  justify-content: space-between;
-}
-
-.nav-link {
-  padding: 6px 12px;
-  font-size: 0.8rem;
-}
-
-.hero-section {
-  padding-bottom: 40px;
-}
-}
-
-
-/* ==========================================================================
-   BOOK SHOWCASE & QUOTE SECTION
+   7. BOOK SHOWCASE & NEWSLETTER CARD
    ========================================================================== */
 .book-section {
   background-color: #f4f3ef;
@@ -530,14 +456,13 @@ font-size: 0.75rem;
 }
 
 .book-container {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Header Text */
 .book-title {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(2rem, 3.5vw, 2.8rem);
@@ -557,7 +482,6 @@ font-size: 0.75rem;
   line-height: 1.5;
 }
 
-/* Book Cover Display */
 .book-cover-wrapper {
   margin-bottom: 60px;
   perspective: 1000px;
@@ -587,7 +511,6 @@ font-size: 0.75rem;
   object-fit: contain;
 }
 
-/* Quote Section */
 .quote-wrapper {
   display: flex;
   flex-direction: column;
@@ -616,71 +539,29 @@ font-size: 0.75rem;
 }
 
 .quote-author {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #666666;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-top: 8px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .book-section {
-    padding: 60px 20px;
-  }
-
-  .book-cover {
-    width: 210px;
-    height: 315px;
-  }
-
-  .book-art {
-    width: 90px;
-    height: 90px;
-  }
-}
-
-/* ==========================================================================
-   BOOK SECTION & NEWSLETTER CARD (CLEAN & CLASSY)
-   ========================================================================== */
-.book-section {
-  background-color: #eff4ef; /* Guarantees whole section background is light cream */
-  padding: 80px 40px 100px;
-  width: 100%;
-}
-
-.book-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Quote Author Formatting */
-.quote-author {
   display: block;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: #8c8a84;
+  margin-top: 8px;
   margin-bottom: 64px;
 }
 
-/* Classy Subtle Card (Seamless blend with page background) */
+/* Newsletter Update Card */
 .book-update-card {
-  background-color: #a2774cdf; /* Subtle contrast shift over #f4f3ef background */
-  border: 1px solid #dfdcd3;  /* Soft organic border instead of black/dark lines */
+  background-color: rgba(162, 119, 76, 0.87);
+  border: 1px solid #dfdcd3;
   padding: 52px 56px;
   display: grid;
   grid-template-columns: 1.35fr 1fr;
   gap: 56px;
   align-items: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02); /* Extremely subtle elevation */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
 
-/* Typography & Layout */
 .update-tag {
   display: block;
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -698,11 +579,10 @@ font-size: 0.75rem;
   font-weight: 500;
   line-height: 1.22;
   letter-spacing: -0.015em;
-  color: #0c0400; /* Rich dark espresso tone */
+  color: #0c0400;
   margin: 0 0 32px 0;
 }
 
-/* Form Styling */
 .update-form {
   display: flex;
   align-items: flex-end;
@@ -729,7 +609,7 @@ font-size: 0.75rem;
   width: 100%;
   height: 48px;
   padding: 0 20px;
-  background-color: #f4f3ef; /* Matches section main color */
+  background-color: #f4f3ef;
   border: 1px solid #d3cfc4;
   border-radius: 10px;
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -748,7 +628,6 @@ font-size: 0.75rem;
   color: #a8a499;
 }
 
-/* Submit Button */
 .update-btn {
   height: 48px;
   padding: 0 26px;
@@ -773,39 +652,15 @@ font-size: 0.75rem;
   transform: translateY(-1px);
 }
 
-/* Right Side Descriptive Quote */
 .update-description p {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.2rem;
   line-height: 1.55;
-  color: #000000b9;
+  color: rgba(0, 0, 0, 0.73);
   margin: 0;
-  border-left: 1px solid #d0ccc0; /* Thin, soft divider line */
+  border-left: 1px solid #d0ccc0;
   padding-left: 28px;
 }
-
-/* Mobile Layout */
-@media (max-width: 868px) {
-  .book-update-card {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 36px 24px;
-  }
-  .update-form {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .update-btn {
-    justify-content: center;
-  }
-  .update-description p {
-    border-left: none;
-    padding-left: 0;
-    border-top: 1px solid #d0c9c0;
-    padding-top: 24px;
-  }
-}
-
 
 .form-result-msg {
   display: none;
@@ -819,7 +674,7 @@ font-size: 0.75rem;
 
 .form-result-msg.success {
   display: block;
-  color: #311912; /* Matches your warm terracotta accent */
+  color: #311912;
 }
 
 .form-result-msg.error {
@@ -828,7 +683,7 @@ font-size: 0.75rem;
 }
 
 /* ==========================================================================
-   FAQ SECTION STYLING
+   8. FAQ SECTION STYLING
    ========================================================================== */
 .faq-section {
   background-color: #f4f3ef;
@@ -850,7 +705,6 @@ font-size: 0.75rem;
   letter-spacing: -0.015em;
 }
 
-/* Grid Layout - Stretches left card to match list height */
 .faq-grid {
   display: grid;
   grid-template-columns: 360px 1fr;
@@ -858,9 +712,7 @@ font-size: 0.75rem;
   align-items: stretch;
 }
 
-/* --------------------------------------------------------------------------
-   Left Contact Card
-   -------------------------------------------------------------------------- */
+/* FAQ Contact Card */
 .faq-card {
   background-color: #1a1815;
   border-radius: 28px;
@@ -873,7 +725,6 @@ font-size: 0.75rem;
   box-sizing: border-box;
 }
 
-/* Dynamically expanding image wrapper to match right list height */
 .faq-card-image {
   width: 100%;
   flex: 1;
@@ -901,7 +752,7 @@ font-size: 0.75rem;
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 2.2rem;
   font-weight: 400;
-  color: #e5a767; /* Warm amber headline */
+  color: #e5a767;
   margin: 0;
 }
 
@@ -917,37 +768,24 @@ font-size: 0.75rem;
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #d4924c;
-  color: #1a1815;
-  padding: 14px 20px;
-  border-radius: 14px;
+  gap: 12px;
+  width: fit-content;
+  background-color: #e5a663;
+  color: #121212;
+  padding: 6px 6px 6px 20px;
+  border-radius: 12px;
   text-decoration: none;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.85rem;
   font-weight: 700;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .faq-card-btn:hover {
-  background-color: #e0a35f;
+  background-color: #f0b272;
+  transform: translateY(-2px);
 }
-
-.btn-arrow {
-  width: 28px;
-  height: 28px;
-  background-color: #1a1815;
-  color: #d4924c;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  line-height: 1;
-}
-
-/* --------------------------------------------------------------------------
-   Right Accordion List
-   -------------------------------------------------------------------------- */
+/* Accordion */
 .faq-accordion-list {
   display: flex;
   flex-direction: column;
@@ -963,7 +801,7 @@ font-size: 0.75rem;
 }
 
 .faq-item[open] {
-  background-color: #ebdcd5; /* Warm terra-cotta tint when expanded */
+  background-color: #ebdcd5;
   border-color: #d8c3b9;
 }
 
@@ -978,15 +816,14 @@ font-size: 0.75rem;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  list-style: none; /* Hides default disclosure triangle */
+  list-style: none;
   user-select: none;
 }
 
 .faq-question::-webkit-details-marker {
-  display: none; /* Hides webkit disclosure triangle */
+  display: none;
 }
 
-/* Arrow/Dot Indicator Button */
 .faq-icon {
   width: 32px;
   height: 32px;
@@ -1008,10 +845,9 @@ font-size: 0.75rem;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-/* Open State: Icon shrinks into a solid circle dot and arrow fades out */
 .faq-item[open] .faq-icon {
   background-color: #a87263;
-  transform: scale(0.65); /* Shrinks arrow button into solid circle */
+  transform: scale(0.65);
 }
 
 .faq-item[open] .faq-icon::after {
@@ -1019,7 +855,6 @@ font-size: 0.75rem;
   transform: translate(-50%, -55%) scale(0);
 }
 
-/* Smooth Slide & Fade for Answer Paragraph */
 .faq-answer {
   padding: 0 28px 24px 28px;
   opacity: 0;
@@ -1042,22 +877,11 @@ font-size: 0.75rem;
   }
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 900px) {
-  .faq-grid {
-    grid-template-columns: 1fr;
-  }
-  .faq-card-image {
-    min-height: 280px;
-  }
-}
-
-
 /* ==========================================================================
-   CONTACT SECTION STYLES
+   9. CONTACT SECTION STYLES
    ========================================================================== */
 .contact-section {
-  background-color: #fbf9f5; /* Warm off-white background */
+  background-color: #fbf9f5;
   padding: 100px 40px;
   width: 100%;
 }
@@ -1071,7 +895,6 @@ font-size: 0.75rem;
   align-items: flex-start;
 }
 
-/* Left Column */
 .contact-info {
   flex: 1;
   max-width: 480px;
@@ -1120,7 +943,6 @@ font-size: 0.75rem;
   opacity: 0.7;
 }
 
-/* Right Column (Form) */
 .contact-form-wrapper {
   flex: 1.1;
   max-width: 540px;
@@ -1153,7 +975,7 @@ font-size: 0.75rem;
 .form-group input,
 .form-group textarea {
   width: 100%;
-  background-color: #edebe6; /* Warm input grey */
+  background-color: #edebe6;
   border: none;
   border-radius: 4px;
   padding: 16px 18px;
@@ -1178,7 +1000,6 @@ font-size: 0.75rem;
   resize: vertical;
 }
 
-/* Submit Button */
 .submit-btn {
   align-self: flex-end;
   margin-top: 10px;
@@ -1208,30 +1029,11 @@ font-size: 0.75rem;
   transform: translateY(-2px);
 }
 
-/* Mobile Responsive */
-@media (max-width: 868px) {
-  .contact-container {
-    flex-direction: column;
-    gap: 50px;
-  }
-
-  .contact-info,
-  .contact-form-wrapper {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .submit-btn {
-    align-self: stretch;
-    justify-content: center;
-  }
-}
-
 /* ==========================================================================
-   SITE FOOTER STYLING
+   10. SITE FOOTER STYLING
    ========================================================================== */
 .site-footer {
-  background-color: #1a1815; /* Dark espresso shade matching the FAQ card */
+  background-color: #1a1815;
   color: #e6e4db;
   padding: 80px 40px 40px;
   width: 100%;
@@ -1249,12 +1051,11 @@ font-size: 0.75rem;
   margin-bottom: 60px;
 }
 
-/* Brand Column */
 .footer-logo {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 2.2rem;
   font-weight: 500;
-  color: #e5a767; /* Warm amber accent */
+  color: #e5a767;
   margin: 0 0 16px 0;
   letter-spacing: -0.01em;
 }
@@ -1268,7 +1069,6 @@ font-size: 0.75rem;
   margin: 0;
 }
 
-/* Links Columns */
 .footer-heading {
   display: block;
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -1301,7 +1101,6 @@ font-size: 0.75rem;
   color: #e5a767;
 }
 
-/* Divider Line */
 .footer-divider {
   width: 100%;
   height: 1px;
@@ -1309,7 +1108,6 @@ font-size: 0.75rem;
   margin-bottom: 32px;
 }
 
-/* Footer Bottom Copyright */
 .footer-bottom {
   display: flex;
   justify-content: space-between;
@@ -1328,51 +1126,42 @@ font-size: 0.75rem;
   font-style: italic;
 }
 
-/* Responsive Footer */
-@media (max-width: 768px) {
-  .footer-top {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  
-  .footer-bottom {
-    flex-direction: column;
-    gap: 12px;
-    align-items: flex-start;
-  }
+.admin-secret-link {
+  color: transparent;
+  text-decoration: none;
+  font-size: 0.8rem;
+  user-select: none;
+}
+
+.admin-secret-link:hover {
+  color: #a39e95;
 }
 
 /* ==========================================================================
-   FLOATING EYE BADGE
+   11. FLOATING EYE BADGE & CURSOR
    ========================================================================== */
-   .floating-eye-badge {
-      position: fixed;
-      bottom: 28px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 9999;
-      
-      display: inline-flex;
-      align-items: center;
-      gap: 16px;
-      
-      background-color: #121110;
-      padding: 8px 10px 8px 24px;
-      border-radius: 50px;
-      border: 1px solid #383632;
-      
-      text-decoration: none;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      
-      /* Guarantees clickability */
-      pointer-events: auto !important; 
-    }
-    
-    /* Ensure inner elements don't intercept mouse clicks */
-    .floating-eye-badge * {
-      pointer-events: none;
-    }
+.floating-eye-badge {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #121110;
+  padding: 8px 10px 8px 24px;
+  border-radius: 50px;
+  border: 1px solid #383632;
+  text-decoration: none;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  pointer-events: auto !important; 
+}
+
+.floating-eye-badge * {
+  pointer-events: none;
+}
 
 .floating-eye-badge:hover {
   transform: translateX(-50%) translateY(-2px);
@@ -1388,7 +1177,6 @@ font-size: 0.75rem;
   letter-spacing: -0.01em;
 }
 
-/* Borderless Cream Eye Pair */
 .eye-pair {
   display: flex;
   align-items: center;
@@ -1417,13 +1205,7 @@ font-size: 0.75rem;
   will-change: transform;
 }
 
-/* ==========================================================================
-   COLORFUL QUILL CURSOR
-   ========================================================================== */
-html, body, a, button, summary, input, textarea {
-  cursor: none !important;
-}
-
+/* Quill Cursor Styles */
 .pen-cursor {
   position: fixed;
   top: 0;
@@ -1465,16 +1247,113 @@ body.hovering .ink-follower {
   opacity: 0.95;
 }
 
-
-
-/* Admin link*/
-
-.admin-secret-link {
-  color: transparent;
-  text-decoration: none;
-  font-size: 0.8rem;
-  user-select: none;
+/* ==========================================================================
+   12. MEDIA QUERIES (RESPONSIVE)
+   ========================================================================== */
+@media (max-width: 900px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+  .faq-card-image {
+    min-height: 280px;
+  }
 }
-.admin-secret-link:hover {
-  color: #a39e95; /* Subtle hint on direct hover */
+
+@media (max-width: 868px) {
+  .book-update-card {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 36px 24px;
+  }
+  .update-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .update-btn {
+    justify-content: center;
+  }
+  .update-description p {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid #d0c9c0;
+    padding-top: 24px;
+  }
+  .contact-container {
+    flex-direction: column;
+    gap: 50px;
+  }
+  .contact-info,
+  .contact-form-wrapper {
+    max-width: 100%;
+    width: 100%;
+  }
+  .submit-btn {
+    align-self: stretch;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 850px) {
+  .author-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+  }
+  .author-headline {
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .author-intro-section {
+    padding: 60px 20px 60px;
+  }
+  .author-headline {
+    font-size: 1.9rem;
+    margin-bottom: 40px;
+  }
+  .carousel-container {
+    padding: 10px 20px 20px;
+  }
+  .article-card {
+    width: 210px;
+  }
+  .article-thumb {
+    height: 280px;
+  }
+  .header {
+    top: 12px;
+    width: 92%;
+  }
+  .nav-pill {
+    overflow-x: auto;
+    justify-content: space-between;
+  }
+  .nav-link {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+  .hero-section {
+    padding-bottom: 40px;
+  }
+  .book-section {
+    padding: 60px 20px;
+  }
+  .book-cover {
+    width: 210px;
+    height: 315px;
+  }
+  .book-art {
+    width: 90px;
+    height: 90px;
+  }
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
 }
