@@ -129,7 +129,7 @@
 
         <div class="form-group">
           <label for="admin-password">PASSWORD</label>
-          <input type="password" id="admin-password" placeholder="••••••••" required />
+          <input type="password" id="admin-password" placeholder="••••••••••" required />
         </div>
 
         <button type="submit" class="auth-btn">LOG IN</button>
@@ -169,46 +169,82 @@
   <!-- Shared Header Navigation -->
   <header class="header" id="admin-header">
     <nav class="nav-pill">
-      <a href="index.html#home" class="nav-link">Home</a>
-      <a href="index.html#book" class="nav-link">Book</a>
-      <a href="index.html#articles" class="nav-link">Articles</a>
-      <a href="index.html#update" class="nav-link">Update</a>
-      <a href="index.html#faq" class="nav-link">FAQ</a>
-      <a href="index.html#contact" class="nav-link">Contact</a>
+      <a href="index.html#home" class="nav-link"> Go Back Home</a>
     </nav>
   </header>
 
   <main class="admin-container" id="admin-content">
-    <h1 class="admin-title">Subscriber Admin Panel</h1>
-
+  
+    <!-- Poetic & Cute Greeting Header -->
+    <header class="welcome-banner">
+      <div class="welcome-text">
+        <h1 class="greeting-title">Hi, Clovis! </h1>
+        <p class="greeting-subtitle">
+          Here are the kindred souls gathered in your quiet corner. <br />
+          Ready to send them a little piece of magic today?
+        </p>
+      </div>
+      
+      <!-- Cute Aesthetic Bear/Mascot SVG (Styled with warm vintage tones) -->
+      <div class="welcome-mascot">
+        <svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Bear Body -->
+          <circle cx="50" cy="55" r="30" fill="#f4efe8" stroke="#2b211a" stroke-width="2.5"/>
+          <!-- Ears -->
+          <circle cx="28" cy="32" r="9" fill="#f4efe8" stroke="#2b211a" stroke-width="2.5"/>
+          <circle cx="28" cy="32" r="4" fill="#b84a39"/>
+          <circle cx="72" cy="32" r="9" fill="#f4efe8" stroke="#2b211a" stroke-width="2.5"/>
+          <circle cx="72" cy="32" r="4" fill="#b84a39"/>
+          <!-- Eyes (Closed/Happy) -->
+          <path d="M 40 50 Q 44 45 48 50" stroke="#2b211a" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M 52 50 Q 56 45 60 50" stroke="#2b211a" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <!-- Blush -->
+          <ellipse cx="38" cy="54" rx="4" ry="2.5" fill="#e0a396"/>
+          <ellipse cx="62" cy="54" rx="4" ry="2.5" fill="#e0a396"/>
+          <!-- Nose & Snout -->
+          <ellipse cx="50" cy="56" rx="6" ry="4.5" fill="#e8dfd5"/>
+          <polygon points="50,53 47,56 53,56" fill="#2b211a"/>
+          <path d="M 50 56 Q 50 60 48 60 M 50 56 Q 50 60 52 60" stroke="#2b211a" stroke-width="2" stroke-linecap="round"/>
+          <!-- Coffee Cup -->
+          <rect x="65" y="60" width="14" height="16" rx="3" fill="#b84a39" stroke="#2b211a" stroke-width="2"/>
+          <path d="M 79 64 C 83 64 83 72 79 72" stroke="#2b211a" stroke-width="2" fill="none"/>
+          <!-- Steam -->
+          <path d="M 70 56 Q 72 52 70 48" stroke="#a87263" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.7"/>
+        </svg>
+      </div>
+    </header>
+  
     <!-- Subscriber List Card -->
     <div class="admin-card">
       <h2>
-        Subscribers 
+        <span>Your Subscribers</span> 
         <span class="sub-badge" id="sub-count">0</span>
       </h2>
+      <p class="card-hint">A list of readers awaiting your next letter.</p>
       <ul id="email-list" class="subscriber-list">
         <!-- Dynamic list items populate here -->
       </ul>
     </div>
-
+  
     <!-- Broadcast Form Card -->
     <div class="admin-card">
-      <h2>Send Announcement to All Subscribers</h2>
+      <h2>Whisper a Message to Everyone </h2>
+      <p class="card-hint">Draft a newsletter, an update, or a gentle note to all subscribers.</p>
+      
       <form id="broadcast-form" class="broadcast-form">
         
         <div class="form-group">
-          <label for="email-subject">SUBJECT LINE</label>
-          <input type="text" id="email-subject" placeholder="Email Subject Line" required />
+          <label for="email-subject">LETTER SUBJECT</label>
+          <input type="text" id="email-subject" placeholder="A quiet thought for today..." required />
         </div>
-
+  
         <div class="form-group">
-          <label for="email-body">MESSAGE</label>
-          <textarea id="email-body" rows="6" placeholder="Write your broadcast message here..." required></textarea>
+          <label for="email-body">YOUR MESSAGE</label>
+          <textarea id="email-body" rows="6" placeholder="Dear readers, I wanted to share..." required></textarea>
         </div>
-
+  
         <button type="submit" id="send-btn" class="send-broadcast-btn">
-          SEND BROADCAST <span>&rarr;</span>
+          SEND LETTER <span>&rarr;</span>
         </button>
       </form>
     </div>

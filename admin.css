@@ -62,8 +62,8 @@ margin-top: 4px;
 /* Base Card Design */
 .admin-card {
 background: var(--card-bg);
-padding: 36px 40px;
-border-radius: 20px;
+padding: 56px 40px;
+border-radius: 10px;
 border: 1px solid var(--border-subtle);
 box-shadow: 0 10px 30px -10px rgba(74, 56, 44, 0.05);
 transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -198,4 +198,76 @@ transition: transform 0.2s ease;
 
 .send-broadcast-btn:hover span {
 transform: translateX(4px);
+}
+
+
+/* ==========================================================================
+   POETIC & CUTE GREETING BANNER
+   ========================================================================== */
+
+.welcome-banner {
+  background: #ffffff;
+  border: 1px solid #e8e2d9;
+  border-radius: 20px;
+  padding: 2.2rem 2.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  box-shadow: 0 10px 30px rgba(43, 33, 26, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle background glow effect */
+.welcome-banner::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(184, 74, 57, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+  pointer-events: none;
+}
+
+.welcome-text {
+  max-width: 480px;
+}
+
+.greeting-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2b211a;
+  margin: 0 0 0.6rem 0;
+  letter-spacing: -0.5px;
+}
+
+.greeting-subtitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #6b5c52;
+  margin: 0;
+  font-style: italic;
+}
+
+.welcome-mascot {
+  flex-shrink: 0;
+  filter: drop-shadow(0 6px 12px rgba(43, 33, 26, 0.08));
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.welcome-banner:hover .welcome-mascot {
+  transform: translateY(-4px) rotate(2deg);
+}
+
+.card-hint {
+  font-size: 0.85rem;
+  color: #8c7b70;
+  margin-top: -1rem;
+  margin-bottom: 1.25rem;
+  font-style: italic;
 }
