@@ -24,7 +24,7 @@ html, body {
   top: 24px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 100;
+  z-index: 1000;
 }
 
 .nav-pill {
@@ -40,26 +40,27 @@ html, body {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
-.nav-link {
-  color: #cccccc;
+.nav-pill .nav-link {
+  color: #cccccc !important;
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
   padding: 8px 18px;
   border-radius: 30px;
-  transition: all 0.3s ease;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  display: inline-block;
 }
 
-.nav-link:hover {
-  color: #ffffff;
+.nav-pill .nav-link:hover {
+  color: #ffffff !important;
 }
 
-.nav-link.active {
-  background-color: #e5a663;
-  color: #121212;
-  font-weight: 600;
+/* Forced Orange Pill Styling */
+.nav-pill .nav-link.active {
+  background-color: #e5a663 !important;
+  color: #121212 !important;
+  font-weight: 600 !important;
 }
-
 /* ==========================================================================
    3. HERO SECTION
    ========================================================================== */
