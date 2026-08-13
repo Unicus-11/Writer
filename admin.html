@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard | Subscribers</title>
+  <style>
+    body { font-family: sans-serif; background: #f4f3ef; color: #121212; padding: 40px; }
+    .admin-container { max-width: 800px; margin: 0 auto; }
+    .subscriber-list { background: #fff; padding: 20px; border-radius: 8px; margin-bottom: 30px; }
+    .broadcast-card { background: #fff; padding: 20px; border-radius: 8px; }
+    input, textarea { width: 100%; margin-bottom: 12px; padding: 10px; border-radius: 4px; border: 1px solid #ccc; }
+    button { background: #e5a663; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <h1>Subscriber Admin Panel</h1>
+
+    <!-- Subscriber Count & List -->
+    <div class="subscriber-list">
+      <h2>Subscribers (<span id="sub-count">0</span>)</h2>
+      <ul id="email-list"></ul>
+    </div>
+
+    <!-- Broadcast Email Sender -->
+    <div class="broadcast-card">
+      <h2>Send Announcement to All Users</h2>
+      <form id="broadcast-form">
+        <input type="text" id="email-subject" placeholder="Email Subject Line" required />
+        <textarea id="email-body" rows="6" placeholder="Write your message here..." required></textarea>
+        <button type="submit" id="send-btn">Send Broadcast &rarr;</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+    const supabaseUrl = 'YOUR_SUPABASE_PROJECT_URL';
+    const supabaseKey = 'YOUR_SUPABASE_ANON_KEY';
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    // Fetch and display subscribers
+    async function loadSubscribers() {
+      const { data: subscribers, error } = await supabase
+        .from('subscribers')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        console.error(error);
+        return;
+      }
+
+      const listElement = document.getElementById('email-list');
+      document.getElementById('sub-count').textContent = subscribers.length;
+      listElement.innerHTML = '';
+
+      subscribers.forEach(sub => {
+        const li = document.createElement('li');
+        li.textContent = sub.email;
+        listElement.appendChild(li);
+      });
+    }
+
+    // Send Broadcast Handler via Serverless Function / Resend API
+    document.getElementById('broadcast-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const subject = document.getElementById('email-subject').value;
+      const body = document.getElementById('email-body').value;
+
+      const response = await fetch('/api/send-broadcast', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subject, message: body })
+      });
+
+      if (response.ok) {
+        alert('Broadcast sent successfully!');
+      } else {
+        alert('Failed to send broadcast.');
+      }
+    });
+
+    loadSubscribers();
+  </script>
+</body>
+</html>

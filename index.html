@@ -414,6 +414,54 @@ window.addEventListener('pageshow', () => {
   </div>
 </section>
 
+<section class="contact-section">
+  <div class="contact-container">
+    
+    <!-- Left Column: Text & Info -->
+    <div class="contact-info">
+      <h2 class="contact-title">
+        If you have any questions, or are interested in an interview or a signing at your event, please fill out this form.
+      </h2>
+
+      <div class="contact-details">
+        <p><span>TEL</span> <a href="tel:3064032039">306-403-2039</a></p>
+        <p><span>EMAIL</span> <a href="mailto:mandukya8@gmail.com">MANDUKYA8@GMAIL.COM</a></p>
+        <p><span>AGENT</span> <a href="mailto:curiousbooks@agent.com">CURIOUSBOOKS@AGENT.COM</a></p>
+      </div>
+    </div>
+
+    <!-- Right Column: Form -->
+    <div class="contact-form-wrapper">
+      <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+        
+        <!-- Web3Forms Access Key connected to mandukya8@gmail.com -->
+        <input type="hidden" name="access_key" value="879dd2e6-7131-4b8e-8094-fc475b46bfb8" />
+        <input type="hidden" name="subject" value="New Contact Inquiry from Website" />
+
+        <div class="form-group">
+          <label for="name">NAME</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">EMAIL</label>
+          <input type="email" id="email" name="email" placeholder="Your email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="message">MESSAGE</label>
+          <textarea id="message" name="message" rows="5" placeholder="Message" required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          SUBMIT 
+        </button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
 
 
 <!-- FOOTER SECTION -->
