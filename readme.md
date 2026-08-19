@@ -2,7 +2,7 @@
 
 A responsive web application and content management platform designed to showcase the philosophical framework of **Consciousism** (by Clovis), featuring a reader-facing website alongside a dedicated **Admin Dashboard** for managing subscriber messages and site updates.
 
-![Consciousism Preview](./preview.png)
+![Consciousism Preview](./images/preview.png)
 
 ---
 
